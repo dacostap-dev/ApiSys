@@ -44,12 +44,13 @@ class StudentController extends Controller
         $student = new Student();
         $student -> name = $request->name;
         $student -> email = $request->email;
+        $student -> genero = $request->genero;
         $student -> promotion_id = $request->promotion_id;
         $saved = $student -> save();
 
         $data=[];
         $data['success'] = $saved;
-        $data['expediente'] = $student;
+        $data['student'] = $student;
         return $data;
     }
 
@@ -86,7 +87,10 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $id = $request->id;
+        $student = Student::find($id);
+        $student -> update($request->all());
+        return $student;
     }
 
     /**

@@ -15,12 +15,11 @@ class StudentController extends Controller
      */
     public function index(Request $request)
     {
-        /*$id = $request->get('id');
         $name = $request->get('name');
-        $students = Student::where('promotion_id', $id)->orderBy('name', 'ASC')->name($name)->get();
-        Student::where('promotion_id', $id)->orderBy('name', 'ASC')->get();
+
+        $students = Student::orderBy('name', 'ASC')->name($name)->with('promotion')->get();
         return $students;
-        */
+        
     }
 
     /**

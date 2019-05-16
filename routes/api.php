@@ -17,6 +17,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('/student', 'StudentController')->only(['index','store', 'show','edit', 'update','destroy']);
-Route::resource('/promotion', 'PromotionController')->only(['index','store', 'edit', 'update','destroy']);
-Route::resource('/modul', 'ModulController')->only(['index','store', 'show','edit', 'update','destroy']);
+Route::group(['middleware' => ['jwt.verify']], function() {
+    
+    Route::resource('/promotion', 'PromotionController')->only(['index','store', 'edit', 'update','destroy']);
+    Route::resource('/student', 'StudentController')->only(['index','store', 'show','edit', 'update','destroy']);
+    Route::resource('/modul', 'ModulController')->only(['index','store', 'show','edit', 'update','destroy']);
+  
+});
+
+
+
+
+Route::post('login', 'UserController@authenticate');

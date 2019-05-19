@@ -42,6 +42,8 @@ class ModulController extends Controller
         $modul -> informe = '';
         $modul -> solicitud = '';
         $modul -> memorandum = '';
+        $modul -> f_supervision = '';
+        $modul -> f_evaluacion = '';
         $saved = $modul->save();
 
         $data=[];
@@ -98,6 +100,8 @@ class ModulController extends Controller
      */
     public function destroy($id)
     {
-        //
+            $modul= Modul::findOrFail($id);
+            $modul->delete();
+
     }
 }

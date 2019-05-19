@@ -24,7 +24,10 @@ class CreateModulsTable extends Migration
             $table->string('memorandum')->nullable();
             $table->string('informe')->nullable();
             $table->string('asesor')->nullable();
+            $table->string('f_supervision')->nullable();
+            $table->string('f_evaluacion')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -18,7 +18,7 @@ class Student extends Model
 
     public function scopeName($query, $name){
         if($name){
-            return $query->where('name', 'LIKE', "%$name%");
+            return $query->where('name', 'like', "%$name%"); //ilike para postgress
         }
     }
 }

@@ -15,7 +15,7 @@ class ModulTableSeeder extends Seeder
     {
         $students = Student::select('id')->get();
 
-        for($i=0; $i<20; $i++){
+        for($i=0; $i<200; $i++){
             factory(Modul::class)->create([
                 'student_id' => $students->random()->id,
             ]);

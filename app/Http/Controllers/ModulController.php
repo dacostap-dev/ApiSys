@@ -41,8 +41,9 @@ class ModulController extends Controller
         $modul -> recibo = '0';
         $modul -> informe = '';
         $modul -> solicitud = '';
+        $modul -> proyecto = '0';
         $modul -> memorandum = '';
-        $modul -> f_supervision = '';
+        $modul -> f_supervision = '0';
         $modul -> f_evaluacion = '';
         $saved = $modul->save();
 

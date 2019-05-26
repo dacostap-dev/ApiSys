@@ -22,9 +22,10 @@ class CreateModulsTable extends Migration
             $table->string('recibo')->default('0');
             $table->string('solicitud')->nullable();
             $table->string('memorandum')->nullable();
+            $table->string('proyecto')->default('0');
             $table->string('informe')->nullable();
             $table->string('asesor')->nullable();
-            $table->string('f_supervision')->nullable();
+            $table->string('f_supervision')->default('0');
             $table->string('f_evaluacion')->nullable();
             $table->timestamps();
             $table->softDeletes();

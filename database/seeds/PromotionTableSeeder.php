@@ -12,6 +12,12 @@ class PromotionTableSeeder extends Seeder
      */
     public function run()
     {
-       factory(Promotion::class, 9)->create();
+       factory(Promotion::class, 9)->create([
+           'user_id' => '1',
+       ]);
+
+       factory(Promotion::class, 5)->create([
+        'user_id' => '2',
+    ]);
     }
 }

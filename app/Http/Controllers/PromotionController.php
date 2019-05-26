@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Promotion;
 use Illuminate\Http\Request;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class PromotionController extends Controller
 {
@@ -14,8 +15,9 @@ class PromotionController extends Controller
      */
     public function index(Request $request)
     {
+        $user = JWTAuth::authenticate();
         $name = $request->get('name');
-        $promotions = Promotion::orderBy('id', 'Desc')->name($name)->get();
+        $promotions = Promotion::where('user_id', $user->id)->orderBy('id', 'Desc')->name($name)->get();
       
         return $promotions;
     }
@@ -38,8 +40,10 @@ class PromotionController extends Controller
      */
     public function store(Request $request)
     {
+        $user = JWTAuth::authenticate();
         $promotion = new Promotion();
         $promotion -> name = $request->name;
+        $promotion -> user_id = $user->id;
         $saved = $promotion -> save();
 
         $data=[];
@@ -80,10 +84,11 @@ class PromotionController extends Controller
      */
     public function update(Request $request)
     {
+        $user = JWTAuth::authenticate();
         $id = $request->id;
         $promotion = Promotion::find($id);
         $promotion->update($request->all());
-        $promotions = Promotion::orderBy('id', 'Desc')->get();
+        $promotions = Promotion::where('user_id', $user->id)->orderBy('id', 'Desc')->get();
         return $promotions;
     }
 

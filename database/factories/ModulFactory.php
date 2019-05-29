@@ -11,7 +11,7 @@ $factory->define(Modul::class, function (Faker $faker) {
         'recibo' => $faker->boolean($chanceOfGettingTrue = 50),
         'solicitud' => $faker->dateTime($max = 'now', $timezone = null), // DateTime('2008-04-25 08:37:17', 'UTC')
         'memorandum' => $faker->dateTime($max = 'now', $timezone = null), // DateTime('2008-04-25 08:37:17', 'UTC')
-        'informe' => $faker->numberBetween($min = 150, $max= 300). ' Horas',
+        'informe' => $faker->numberBetween($min = 150, $max= 300),
         'proyecto' => $faker->boolean($chanceOfGettingTrue = 50),
         'asesor' => $faker->name,
         'f_supervision' => $faker->boolean($chanceOfGettingTrue = 50),
